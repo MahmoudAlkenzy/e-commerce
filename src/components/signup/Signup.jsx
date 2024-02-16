@@ -2,26 +2,35 @@ import { useFormik } from 'formik';
 import React from 'react';
 import { Container, Row } from 'react-bootstrap';
 import * as yup from 'yup';
+import { useSignup } from '../../hooks/useSignup';
+import { useNavigate } from 'react-router-dom';
 const signupSchema = yup.object({
     name: yup.string().required('name must be req').min(3).max(12),
     email: yup.string().email(),
-    password: yup.string().required('password must be req').min(6).max(6),
-    rePassword: yup.string().required('must be req').min(6).max(6),
+    password: yup.string().required('password must be req').min(6).max(32),
+    rePassword: yup.string().required('must be req').min(6).max(32),
     phone: yup
         .string()
         .required('phone must be req')
-        .matches(/^01[125][0-9]{8}/),
+        .matches(/^01[125][0-9]{8}/, 'must be egyption number'),
 });
 function SignUp() {
+    const navigate = useNavigate();
+    const { signup, isLoading } = useSignup();
     const userData = {
-        name: '',
-        email: '',
-        password: '',
-        rePassword: '',
-        phone: '',
+        name: 'mahmoud',
+        email: 'mahmoud@mahmoud.com',
+        password: '123456',
+        rePassword: '123456',
+        phone: '01123456789',
     };
-    function submitHandler(values) {
-        // console.log('submiting...0, ', values);
+    function submitHandler(userData) {
+        signup(
+            { userData },
+            {
+                onSuccess: () => navigate('/login'),
+            }
+        );
     }
 
     const { handleSubmit, handleChange, values, errors, touched, handleBlur } =

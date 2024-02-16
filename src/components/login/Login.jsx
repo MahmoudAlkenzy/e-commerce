@@ -1,3 +1,10 @@
+import { Container, Row } from 'react-bootstrap';
 export default function Login() {
-    return <div>Login</div>;
+    return (
+        <Container>
+            <Row>
+                <h2></h2>
+            </Row>
+        </Container>
+    );
 }
