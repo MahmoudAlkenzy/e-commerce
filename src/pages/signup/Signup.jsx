@@ -4,6 +4,7 @@ import { Container, Row } from 'react-bootstrap';
 import * as yup from 'yup';
 import { useSignup } from '../../hooks/useSignup';
 import { useNavigate } from 'react-router-dom';
+import { SpinnerMini } from '../../ui/spinners/Spinners';
 const signupSchema = yup.object({
     name: yup.string().required('name must be req').min(3).max(12),
     email: yup.string().email(),
@@ -84,7 +85,7 @@ function SignUp() {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             id="password"
-                            type="text"
+                            type="password"
                             className="form-control"
                         />
                         {errors.password && touched.password && (
@@ -99,7 +100,7 @@ function SignUp() {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             id="rePassword"
-                            type="text"
+                            type="password"
                             className="form-control"
                         />
                         {errors.rePassword && touched.rePassword && (
@@ -127,7 +128,11 @@ function SignUp() {
                             type="submit"
                             className="btn align-self-end bg-main text-white"
                         >
-                            Register
+                            {isLoading ? (
+                                <SpinnerMini />
+                            ) : (
+                                <span> Register</span>
+                            )}
                         </button>
                     </form>
                 </Row>
