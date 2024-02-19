@@ -27,9 +27,20 @@ a:hover {
     color: black;
     text-decoration: none;
 }
+.product {
+    transition: 0.4s;
+    transition-property: transform, border;
+    border: solid 1px #0000;
+}
+.product img {
+    transition: 0.8s transform;
+}
+.product:hover img {
+    transform: scale(1.1);
+}
 .product:hover {
-    box-shadow: var(--shadow);
     border: solid 1px var(--main-color);
+    box-shadow: var(--shadow);
 }
 .product .btn {
     transition: transform 1s, opacity 1s;
@@ -51,4 +62,7 @@ a:hover {
 }
 .bg-main-light {
     background-color: var(--light-color) !important;
+}
+.fs-7 {
+    font-size: 0.9rem;
 }

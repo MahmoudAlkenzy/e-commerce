@@ -11,6 +11,7 @@ import { AuthContextProvider } from './context/AuthContext';
 import Categories from './pages/categories/Categories';
 import Brands from './pages/brands/Brands';
 import ProtectedRoute from './ui/protectedRoute/ProtectedRoute';
+import ProdaucDetails from './pages/prodaucDetails/ProdaucDetails';
 
 const router = createBrowserRouter([
     {
@@ -33,7 +34,16 @@ const router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
             },
+            {
+                path: 'productDetails/:id',
+                element: (
+                    <ProtectedRoute>
+                        <ProdaucDetails />
+                    </ProtectedRoute>
+                ),
+            },
             { path: 'login', element: <Login /> },
+            { path: 'register', element: <SignUp /> },
             {
                 path: 'cart',
                 element: (
@@ -42,7 +52,6 @@ const router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
             },
-            { path: 'register', element: <SignUp /> },
             {
                 path: 'categories',
                 element: (

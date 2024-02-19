@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { BaseUrl } from './baseUrl';
 export async function signup({ userData }) {
     try {
         const { data } = await axios.post(
-            'https://ecommerce.routemisr.com/api/v1/auth/signup',
+            `${BaseUrl}/api/v1/auth/signup`,
             userData
         );
         return data;
@@ -16,7 +17,7 @@ export async function login({ userData }) {
     console.log(userData);
     try {
         const { data } = await axios.post(
-            'https://ecommerce.routemisr.com/api/v1/auth/signin',
+            `${BaseUrl}/api/v1/auth/signin`,
             userData
         );
 

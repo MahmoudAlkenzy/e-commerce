@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { IoIosLogOut } from 'react-icons/io';
 import { useToken } from '../../context/AuthContext';

@@ -11,14 +11,14 @@ import SignOutButton from '../signoutButton/SignOutButton';
 export function NavBar() {
     const { token } = useToken();
     return (
-        <Navbar expand="lg" className="bg-main-light navbar-light">
+        <Navbar sticky="top" expand="lg" className="bg-main-light navbar-light">
             <Container>
                 <Link to="/">
                     <img src={Logo} alt="" />
                 </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    {true && (
+                    {token && (
                         <Nav className="me-auto  align-items-center fw-semibold">
                             <Link className=" nav-link" to="/products">
                                 Home

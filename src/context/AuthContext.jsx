@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 /* eslint-disable react/prop-types */ // TODO: upgrade to latest eslint tooling
 
 const authContext = createContext();
