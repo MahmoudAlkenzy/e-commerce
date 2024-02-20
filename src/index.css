@@ -49,6 +49,7 @@ a:hover {
 }
 .product:hover .btn {
     opacity: 1;
+
     transform: translateY(0%);
 }
 .font-sm {
@@ -65,4 +66,31 @@ a:hover {
 }
 .fs-7 {
     font-size: 0.9rem;
+}
+.fs-8 {
+    font-size: 0.8rem;
+}
+.btn-main {
+    background-color: var(--main-color);
+    transition: 0.4s;
+    color: White;
+    border: 1px #0000 solid;
+}
+.btn-main:hover {
+    background-color: white;
+    color: var(--main-color);
+    border-color: var(--main-color);
+}
+.zoom {
+    width: 25%;
+    height: 25%;
+    border: 1px #8e9b97 solid;
+    position: absolute;
+    transition: 0.1s;
+}
+.pro img {
+    transition: 0.4s;
+}
+.proActive img {
+    transform: scale(1.1);
 }

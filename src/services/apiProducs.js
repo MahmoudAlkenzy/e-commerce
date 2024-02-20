@@ -14,7 +14,7 @@ export async function getProduct(id) {
         const { data } = await axios.get(
             `https://ecommerce.routemisr.com/api/v1/products/${id}`
         );
-        return data;
+        return data.data;
     } catch (error) {
         throw new Error(error.message);
     }
