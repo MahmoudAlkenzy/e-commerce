@@ -6,15 +6,13 @@ export async function signup({ userData }) {
             `${BaseUrl}/api/v1/auth/signup`,
             userData
         );
+
         return data;
     } catch (error) {
-        if (error) {
-            throw new Error(error.response.data.message);
-        }
+        throw new Error(error.response.data.message);
     }
 }
 export async function login({ userData }) {
-    console.log(userData);
     try {
         const { data } = await axios.post(
             `${BaseUrl}/api/v1/auth/signin`,
@@ -23,6 +21,7 @@ export async function login({ userData }) {
 
         return data;
     } catch (error) {
-        throw new Error(error.response.data.message);
+        console.log(error);
+        throw new Error(error.message);
     }
 }

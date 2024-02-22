@@ -1,1 +1,1 @@
-export const BaseUrl ='https://ecommerce.routemisr.com'
+export const BaseUrl = 'https://ecommerce.routemisr.com';

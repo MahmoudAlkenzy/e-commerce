@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { SpinnerMini } from '../../ui/spinners/Spinners';
 
 const loginSchema = Yup.object({
-    email: Yup.string().email(),
-    password: Yup.string().min(6).max(32),
+    email: Yup.string().required().email(),
+    password: Yup.string().required().min(6).max(32),
 });
 export function Login() {
     const navigate = useNavigate();

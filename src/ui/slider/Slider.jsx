@@ -1,26 +1,30 @@
 import Slider from 'react-slick';
-import { Col, Row } from 'react-bootstrap';
+
 /* eslint-disable react/prop-types */ // TODO: upKgrade to latest eslint tooling
 
 export default function ProSlider({ images, Categories }) {
+    const lg = window.matchMedia('(max-width: 992px)');
+    const sm = window.matchMedia('(max-width: 500px)');
+
     var settings = {
         className: 'center',
         centerMode: true,
-        centerPadding: '60px',
-        dots: true,
+        centerPadding: '0px',
+
         infinite: true,
         speed: 500,
-        slidesToShow: Categories ? 6 : 1,
-        slidesToScroll: 1,
+        slidesToShow: Categories
+            ? (sm.matches && 3) || (lg.matches && 4) || 6
+            : 1,
+        swipeToSlide: true,
     };
 
-    console.log(images, Categories);
     return (
-        <Slider className="d-flex" {...settings}>
+        <Slider {...settings}>
             {images?.map((img, idx) => {
                 return (
                     <div key={idx}>
-                        <div style={{ height: '500px', background: 'red' }}>
+                        <div className="categorySlider">
                             <img src={img} className="w-100  h-100" alt="" />
                         </div>
                     </div>
@@ -34,7 +38,11 @@ export default function ProSlider({ images, Categories }) {
                             <figure className="h-100 ">
                                 <img
                                     className="w-100 h-100"
-                                    src={category.image}
+                                    src={
+                                        category.name !== "Women's Fashion"
+                                            ? category.image
+                                            : 'https://static.vecteezy.com/system/resources/previews/016/068/305/non_2x/set-of-stylish-and-trendy-hijab-woman-hand-drawn-anime-style-modern-abstract-faces-fashion-hijab-girl-free-vector.jpg'
+                                    }
                                     alt={category.name}
                                 />
                             </figure>

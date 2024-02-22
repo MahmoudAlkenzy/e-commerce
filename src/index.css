@@ -91,6 +91,17 @@ a:hover {
 .pro img {
     transition: 0.4s;
 }
+.proActive {
+    border: var(--main-color) 2px solid !important;
+}
 .proActive img {
     transform: scale(1.1);
+}
+.categorySlider {
+    height: 500px;
+}
+@media screen and (max-width: 992px) {
+    .categorySlider {
+        height: auto;
+    }
 }

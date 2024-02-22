@@ -9,7 +9,7 @@ export function useLogin() {
         mutationFn: loginApi,
         onSuccess: (res) => {
             console.log(res);
-            toast.success(`elcome back ${res.user.name}`);
+            toast.success(`Welcome back ${res.user.name}`);
             localStorage.setItem('tkn', res.token);
             setToken(res.token);
         },

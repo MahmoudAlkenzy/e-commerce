@@ -15,7 +15,9 @@ export default function Home() {
         <>
             {isLoading1 && isLoading2 && <Spinner />}
             <Container className="py-5 ">
-                <Slider images={[first, second, third, forth]} />
+                <div>
+                    <Slider images={[first, second, third, forth]} />
+                </div>
                 <Slider Categories={categories} />
                 <Row className="row-gap-3 pt-5">
                     {products?.map((product, idx) => {

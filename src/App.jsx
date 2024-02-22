@@ -12,6 +12,7 @@ import Categories from './pages/categories/Categories';
 import Brands from './pages/brands/Brands';
 import ProtectedRoute from './ui/protectedRoute/ProtectedRoute';
 import ProdaucDetails from './pages/prodaucDetails/ProdaucDetails';
+import { CartContextProvider } from './context/CartContext';
 
 const router = createBrowserRouter([
     {
@@ -77,28 +78,30 @@ function App() {
         <>
             <QueryClientProvider client={client}>
                 <AuthContextProvider>
-                    <RouterProvider router={router} />
-                    <ReactQueryDevtools />
-                    <Toaster
-                        position="top-center"
-                        gutter={12}
-                        containerStyle={{ margin: '8px' }}
-                        toastOptions={{
-                            success: {
-                                duration: 3000,
-                            },
-                            error: {
-                                duration: 5000,
-                            },
-                            style: {
-                                background: 'white',
-                                color: 'var(--color-grey-700)',
-                                fontSize: '16px',
-                                padding: '16px 24px',
-                                maxWidth: '500px',
-                            },
-                        }}
-                    />
+                    <CartContextProvider>
+                        <RouterProvider router={router} />
+                        <ReactQueryDevtools />
+                        <Toaster
+                            position="top-center"
+                            gutter={12}
+                            containerStyle={{ margin: '8px' }}
+                            toastOptions={{
+                                success: {
+                                    duration: 3000,
+                                },
+                                error: {
+                                    duration: 5000,
+                                },
+                                style: {
+                                    background: 'white',
+                                    color: 'var(--color-grey-700)',
+                                    fontSize: '16px',
+                                    padding: '16px 24px',
+                                    maxWidth: '500px',
+                                },
+                            }}
+                        />
+                    </CartContextProvider>
                 </AuthContextProvider>
             </QueryClientProvider>
         </>

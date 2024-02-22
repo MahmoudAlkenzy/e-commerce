@@ -10,6 +10,7 @@ export function AuthContextProvider({ children }) {
             setToken(localStorage.getItem('tkn'));
         }
     }, []);
+    if (!token && token !== null) return;
     return (
         <authContext.Provider value={{ token, setToken }}>
             {children}
