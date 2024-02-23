@@ -16,8 +16,9 @@ export default function ProSlider({
         centerMode: false,
         centerPadding: products ? '30px' : '0px',
         arrows: isArrows,
-
-        infinite: false,
+        autoplay: products ? false : true,
+        autoplaySpeed: Categories ? 1500 : 2000,
+        infinite: products ? false : true,
         speed: 500,
         slidesToShow: products
             ? productNumOfSlides
