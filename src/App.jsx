@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createHashRouter } from 'react-router-dom';
 import Layout from './pages/layout/Layout';
 import SignUp from './pages/signUp/SignUp';
 import { Login } from './pages/login/Login';
@@ -13,8 +13,9 @@ import Brands from './pages/brands/Brands';
 import ProtectedRoute from './ui/protectedRoute/ProtectedRoute';
 import ProdaucDetails from './pages/prodaucDetails/ProdaucDetails';
 import { CartContextProvider } from './context/CartContext';
+import Payment from './pages/payment/Payment';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
         path: '/',
         element: <Layout />,
@@ -32,6 +33,14 @@ const router = createBrowserRouter([
                 element: (
                     <ProtectedRoute>
                         <Home />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: 'payment',
+                element: (
+                    <ProtectedRoute>
+                        <Payment />
                     </ProtectedRoute>
                 ),
             },

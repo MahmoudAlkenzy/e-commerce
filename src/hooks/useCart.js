@@ -15,7 +15,6 @@ export function useAddToCart() {
             console.log(cartData.data.products);
             getUserCart();
             toast.success(cartData.message);
-            navigate('/cart');
         },
         onError: (err) => toast.error(err),
     });

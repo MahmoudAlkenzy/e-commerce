@@ -5,11 +5,15 @@ import { Link } from 'react-router-dom';
 import Logo from '../../images/freshcart-logo.svg';
 import SocialList from '../socialMediaList/SocialList';
 import { useToken } from '../../context/AuthContext';
+import { IoCartOutline } from 'react-icons/io5';
 
 import SignOutButton from '../signoutButton/SignOutButton';
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
 
 export function NavBar() {
     const { token } = useToken();
+    const { numOfCartItem } = useContext(CartContext);
     return (
         <Navbar sticky="top" expand="lg" className="bg-main-light navbar-light">
             <Container>
@@ -23,9 +27,7 @@ export function NavBar() {
                             <Link className=" nav-link" to="/products">
                                 Home
                             </Link>
-                            <Link className=" nav-link" to="/cart">
-                                Cart
-                            </Link>
+
                             <Link className=" nav-link" to="/Products">
                                 products
                             </Link>
@@ -41,7 +43,18 @@ export function NavBar() {
                     <Nav className="ms-auto align-items-center fw-semibold">
                         <SocialList />
                         {token ? (
-                            <SignOutButton />
+                            <>
+                                <Link
+                                    className=" position-relative nav-link fs-4 mx-2 "
+                                    to="/cart"
+                                >
+                                    <IoCartOutline />
+                                    <span className="position-absolute fs-8 top-0 start-100  translate-middle-x badge rounded-pill bg-danger">
+                                        {numOfCartItem}
+                                    </span>
+                                </Link>
+                                <SignOutButton />
+                            </>
                         ) : (
                             <>
                                 <Link className="nav-link" to="/login">

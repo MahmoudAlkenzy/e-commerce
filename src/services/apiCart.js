@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { BaseUrl } from './baseUrl';
 
-export async function addToCart({ productId, token }) {
+export async function addToCart({ productId, token, isHome }) {
     try {
         const { data } = await axios.post(
             `${BaseUrl}/api/v1/cart`,
@@ -18,6 +18,7 @@ export async function addToCart({ productId, token }) {
         throw new Error(error.message);
     }
 }
+
 // export async function getUserCart({ token }) {
 //     console.log(token);
 //     try {

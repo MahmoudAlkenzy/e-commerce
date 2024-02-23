@@ -2,7 +2,7 @@ import { ThreeCircles } from 'react-loader-spinner';
 
 export function Spinner() {
     return (
-        <div className="bg-dark w-100 top-0 bottom-0  position-fixed bg-opacity-50 d-flex flex-wrap justify-content-center align-content-center">
+        <div className="bg-primary w-100 top-0 bottom-0  position-fixed bg-opacity-50 d-flex flex-wrap justify-content-center align-content-center">
             <ThreeCircles
                 visible={true}
                 height="100"

@@ -6,7 +6,7 @@ function Layout() {
     return (
         <>
             <NavBar />
-            <div className="min-vh-100">
+            <div className="min-vh-75">
                 <Outlet />
             </div>
             <Footer />

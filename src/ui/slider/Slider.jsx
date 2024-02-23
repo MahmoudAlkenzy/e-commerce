@@ -10,6 +10,7 @@ export default function ProSlider({ images, Categories }) {
         className: 'center',
         centerMode: true,
         centerPadding: '0px',
+        arrows: false,
 
         infinite: true,
         speed: 500,

@@ -43,7 +43,7 @@ a:hover {
     box-shadow: var(--shadow);
 }
 .product .btn {
-    transition: transform 1s, opacity 1s;
+    transition: transform 0.5s, opacity 0.5s;
     transform: translateY(100%);
     opacity: 0;
 }
@@ -70,6 +70,7 @@ a:hover {
 .fs-8 {
     font-size: 0.8rem;
 }
+
 .btn-main {
     background-color: var(--main-color);
     transition: 0.4s;
@@ -104,4 +105,15 @@ a:hover {
     .categorySlider {
         height: auto;
     }
+}
+.min-vh-75 {
+    min-height: 75vh;
+}
+.cart-empty {
+    background: #f8f8f8;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    width: 100dwh;
+    min-height: calc(100vh - 70px);
 }

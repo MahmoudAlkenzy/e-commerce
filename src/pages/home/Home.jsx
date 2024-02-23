@@ -11,9 +11,11 @@ import useCategoies from '../../hooks/useCategoies';
 export default function Home() {
     const { isLoading: isLoading1, products } = useProducts();
     const { isLoading: isLoading2, categories } = useCategoies();
+
+    if (isLoading1 || isLoading2) return <Spinner />;
+
     return (
         <>
-            {isLoading1 && isLoading2 && <Spinner />}
             <Container className="py-5 ">
                 <div>
                     <Slider images={[first, second, third, forth]} />
