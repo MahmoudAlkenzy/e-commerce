@@ -13,6 +13,7 @@ export default function Payment() {
     const navigae = useNavigate();
     const { cartId, clearCart } = useContext(CartContext);
     const { token } = useToken();
+    console.log(cartId);
     const shippingAddress = {
         details: detaildRef.current?.value,
         phone: phonedRef.current?.value,
@@ -37,7 +38,6 @@ export default function Payment() {
             throw new Error(error.message);
         }
     }
-
     async function cheackOutSession() {
         try {
             const { data } = await axios.post(
@@ -46,12 +46,12 @@ export default function Payment() {
                 {
                     headers: { token },
                     params: {
-                        url: 'http://localhost:5173/#',
+                        url: `${window.location.origin}/#`,
                     },
                 }
             );
             console.log(data);
-            window.open(data.session.url);
+            window.open(data.session.url, '_self');
         } catch (error) {
             throw new Error(error.message);
         }

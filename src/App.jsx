@@ -14,7 +14,7 @@ import ProtectedRoute from './ui/protectedRoute/ProtectedRoute';
 import ProdaucDetails from './pages/prodaucDetails/ProdaucDetails';
 import { CartContextProvider } from './context/CartContext';
 import Payment from './pages/payment/Payment';
-import AllOreders from './pages/allOrdres/AllOreders';
+import AllOrders from './pages/allOrdres/AllOrders';
 
 const router = createHashRouter([
     {
@@ -49,7 +49,7 @@ const router = createHashRouter([
                 path: 'allorders',
                 element: (
                     <ProtectedRoute>
-                        <AllOreders />
+                        <AllOrders />
                     </ProtectedRoute>
                 ),
             },

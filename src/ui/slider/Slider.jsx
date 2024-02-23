@@ -1,20 +1,27 @@
 import Slider from 'react-slick';
-
+import womanCategory from "../../images/Women's Fashion.jpg";
 /* eslint-disable react/prop-types */ // TODO: upKgrade to latest eslint tooling
 
-export default function ProSlider({ images, Categories }) {
+export default function ProSlider({
+    images,
+    Categories,
+    isArrows = false,
+    products,
+}) {
     const lg = window.matchMedia('(max-width: 992px)');
     const sm = window.matchMedia('(max-width: 500px)');
-
+    const productNumOfSlides = 5;
     var settings = {
         className: 'center',
-        centerMode: true,
-        centerPadding: '0px',
-        arrows: false,
+        centerMode: false,
+        centerPadding: products ? '30px' : '0px',
+        arrows: isArrows,
 
-        infinite: true,
+        infinite: false,
         speed: 500,
-        slidesToShow: Categories
+        slidesToShow: products
+            ? productNumOfSlides
+            : Categories
             ? (sm.matches && 3) || (lg.matches && 4) || 6
             : 1,
         swipeToSlide: true,
@@ -42,7 +49,7 @@ export default function ProSlider({ images, Categories }) {
                                     src={
                                         category.name !== "Women's Fashion"
                                             ? category.image
-                                            : 'https://static.vecteezy.com/system/resources/previews/016/068/305/non_2x/set-of-stylish-and-trendy-hijab-woman-hand-drawn-anime-style-modern-abstract-faces-fashion-hijab-girl-free-vector.jpg'
+                                            : womanCategory
                                     }
                                     alt={category.name}
                                 />
@@ -50,6 +57,30 @@ export default function ProSlider({ images, Categories }) {
                             <h2 className="h5 fw-bold text-center">
                                 {category.name}
                             </h2>
+                        </div>
+                    </div>
+                );
+            })}
+            {products?.map((pro, idx) => {
+                return (
+                    <div key={idx + 100}>
+                        <div style={{ height: '70px' }}>
+                            <figure className="h-100 position-relative ">
+                                <img
+                                    className="w-100 h-100"
+                                    src={pro.product.imageCover}
+                                    alt={pro.title}
+                                />
+                                <span className="  position-absolute badge bg-primary rounded-pill  bottom-0 start-0">
+                                    x {pro.count}
+                                </span>
+                            </figure>
+                            <p className="fs-8 fw-bold text-center">
+                                {pro.product.title
+                                    .split(' ')
+                                    .splice(0, 2)
+                                    .join(' ')}
+                            </p>
                         </div>
                     </div>
                 );

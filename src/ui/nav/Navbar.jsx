@@ -28,14 +28,14 @@ export function NavBar() {
                                 Home
                             </Link>
 
-                            <Link className=" nav-link" to="/Products">
-                                products
-                            </Link>
                             <Link className=" nav-link" to="/Categories">
                                 Categories
                             </Link>
                             <Link className=" nav-link" to="Brands">
                                 Brands
+                            </Link>
+                            <Link className=" nav-link" to="/allorders">
+                                All orders
                             </Link>
                         </Nav>
                     )}

@@ -24,6 +24,7 @@ export function CartContextProvider({ children }) {
             });
             console.log(data, localStorage.getItem('tkn'));
             setCart(data.data.products);
+            localStorage.setItem('userId', data.data.cartOwner);
             setCartPrice(data.data.totalCartPrice);
             setNumOfCartItem(data.numOfCartItems);
             setcartId(data.data._id);
