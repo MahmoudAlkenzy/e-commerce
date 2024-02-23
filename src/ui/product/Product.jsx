@@ -42,7 +42,7 @@ function Product({ product }) {
 
                         {product.priceAfterDiscount ? (
                             <p className="fs-6">
-                                <span className="fs-6 fw-semibold text-success">
+                                <span className="fs-6 fw-semibold text-main">
                                     {' '}
                                     {formatCurrency(product.priceAfterDiscount)}
                                 </span>

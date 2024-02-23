@@ -72,7 +72,7 @@ export default function ProSlider({
                                     src={pro.product.imageCover}
                                     alt={pro.title}
                                 />
-                                <span className="  position-absolute badge bg-primary rounded-pill  bottom-0 start-0">
+                                <span className=" fs- py-1 position-absolute badge bg-main rounded-pill  bottom-0 start-0">
                                     x {pro.count}
                                 </span>
                             </figure>

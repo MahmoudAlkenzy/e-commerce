@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
-import Logo from '../../images/freshcart-logo.svg';
+import Logo from '../../images/logo.png';
 import SocialList from '../socialMediaList/SocialList';
 import { useToken } from '../../context/AuthContext';
 import { IoCartOutline } from 'react-icons/io5';
@@ -18,12 +18,15 @@ export function NavBar() {
         <Navbar sticky="top" expand="lg" className="bg-main-light navbar-light">
             <Container>
                 <Link to="/">
-                    <img src={Logo} alt="" />
+                    <div className="d-flex align-items-center ">
+                        <img style={{ width: '30px' }} src={Logo} alt="" />{' '}
+                        <p className="h1 mb-0 fs-4">Exclusive</p>
+                    </div>
                 </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     {token && (
-                        <Nav className="me-auto  align-items-center fw-semibold">
+                        <Nav className="mx-auto  align-items-center fw-semibold">
                             <Link className=" nav-link" to="/products">
                                 Home
                             </Link>
@@ -41,7 +44,7 @@ export function NavBar() {
                     )}
 
                     <Nav className="ms-auto align-items-center fw-semibold">
-                        <SocialList />
+                        {/* <SocialList /> */}
                         {token ? (
                             <>
                                 <Link
