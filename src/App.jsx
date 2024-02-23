@@ -1,6 +1,6 @@
 import { RouterProvider, createHashRouter } from 'react-router-dom';
 import Layout from './pages/layout/Layout';
-import SignUp from './pages/signUp/Signup';
+import SignUp from './pages/signup/Signup';
 import { Login } from './pages/login/Login';
 import Cart from './pages/cart/Cart';
 import Home from './pages/home/Home';
