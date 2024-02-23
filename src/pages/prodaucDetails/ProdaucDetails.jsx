@@ -3,7 +3,7 @@ import useProduct from '../../hooks/useProduct';
 import { Spinner } from '../../ui/spinners/Spinners';
 import { CiHeart } from 'react-icons/ci';
 import { RiLoopLeftLine } from 'react-icons/ri';
-import ReactImageMagnify from 'react-image-magnify';
+import ReactImageMagnify from '@blacklab/react-image-magnify';
 import { LiaShippingFastSolid } from 'react-icons/lia';
 import { FaHeart, FaStar } from 'react-icons/fa';
 import { formatCurrency } from '../../services/helpers';
