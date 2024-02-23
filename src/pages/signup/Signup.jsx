@@ -19,11 +19,11 @@ function SignUp() {
     const navigate = useNavigate();
     const { signup, isLoading } = useSignup();
     const userData = {
-        name: 'mahmoud',
-        email: 'mahmoud@mahmoud.com',
-        password: '123456',
-        rePassword: '123456',
-        phone: '01123456789',
+        name: '',
+        email: '',
+        password: '',
+        rePassword: '',
+        phone: '',
     };
     function submitHandler(userData) {
         signup(
