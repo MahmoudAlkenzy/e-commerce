@@ -1,28 +1,50 @@
-import React, { useEffect, useRef, useState } from 'react';
-/* eslint-disable react/prop-types */ // TODO: upKgrade to latest eslint tooling
+// import { useState } from 'react';
+// /* eslint-disable react/prop-types */ // TODO: upgrade to latest eslint tooling
 
-export default function ImageZoom(props) {
-    const [position, setPosition] = useState({ top: 0, left: 0 });
+// function ImageMagnifier({ imgUrl }) {
+//     const [position, setPosition] = useState({ x: 0, y: 0 });
+//     const [showMagnifier, setShowMagnifier] = useState(false);
+//     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
-    function imageZoom(e) {
-        const { clientX, clientY, offsetX, offsetY, target } = e;
-        console.log(offsetX, offsetY, target, e);
-        setPosition({ top: offsetY, left: offsetX });
-    }
-    useEffect(() => {
-        document
-            .getElementById('zoom')
-            ?.addEventListener('mousemove', imageZoom);
-        return document.removeEventListener('mousemove', imageZoom);
-    }, [props]);
-    console.log(props);
-    return (
-        <div
-            id="zoom"
-            className="position-relative bg-dark w-100 overflow-hidden z-1"
-        >
-            <img alt="hamada" {...props} />
-            <div style={position} className="zoom"></div>
-        </div>
-    );
-}
+//     const handleMouseHover = (e) => {
+//         const { left, top, width, height } =
+//             e.currentTarget.getBoundingClientRect();
+//         const x = ((e.pageX - left) / width) * 100;
+//         const y = ((e.pageY - top) / height) * 100;
+//         setPosition({ x, y });
+
+//         setCursorPosition({ x: e.pageX - left, y: e.pageY - top });
+//     };
+
+//     return (
+//         <div
+//             className="img-magnifier-container"
+//             onMouseEnter={() => setShowMagnifier(true)}
+//             onMouseLeave={() => setShowMagnifier(false)}
+//             onMouseMove={handleMouseHover}
+//         >
+//             <img className="magnifier-img" src={imgUrl} alt="" />
+
+//             {showMagnifier && (
+//                 <div
+//                     style={{
+//                         position: 'absolute',
+//                         left: `${cursorPosition.x - 100}px`,
+//                         top: `${cursorPosition.y - 100}px`,
+//                         pointerEvents: 'none',
+//                     }}
+//                 >
+//                     <div
+//                         className="magnifier-image"
+//                         style={{
+//                             backgroundImage: `url(${imgUrl})`,
+//                             backgroundPosition: `${position.x}% ${position.y}%`,
+//                         }}
+//                     />
+//                 </div>
+//             )}
+//         </div>
+//     );
+// }
+
+// export default ImageMagnifier;

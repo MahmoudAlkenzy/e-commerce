@@ -3,7 +3,7 @@ import useProduct from '../../hooks/useProduct';
 import { Spinner } from '../../ui/spinners/Spinners';
 import { CiHeart } from 'react-icons/ci';
 import { RiLoopLeftLine } from 'react-icons/ri';
-import ReactImageMagnify from '@blacklab/react-image-magnify';
+// import ReactImageMagnify from '@blacklab/react-image-magnify';
 import { LiaShippingFastSolid } from 'react-icons/lia';
 import { FaHeart, FaStar } from 'react-icons/fa';
 import { formatCurrency } from '../../services/helpers';
@@ -11,6 +11,8 @@ import { useState } from 'react';
 import { useAddToCart } from '../../hooks/useCart';
 import { useToken } from '../../context/AuthContext';
 // import ImageZoom from '../../ui/ImageZoom';
+// import ImageMagnifier from './../../ui/ImageZoom';
+
 export default function ProdaucDetails() {
     const { product, isLoading: isProductLoading } = useProduct();
     const [activeImage, setActiveImage] = useState();
@@ -45,7 +47,13 @@ export default function ProdaucDetails() {
                         </Col>
                         <Col sm={10}>
                             <div>
-                                <ReactImageMagnify
+                                <img
+                                    className="w-100"
+                                    src={activeImage}
+                                    alt={product?.title}
+                                />
+
+                                {/* <ReactImageMagnify
                                     isHintEnabled={true}
                                     hoverDelayInMs={200}
                                     fadeDurationInMs={200}
@@ -66,7 +74,8 @@ export default function ProdaucDetails() {
                                             height: 1800,
                                         },
                                     }}
-                                />
+                                /> */}
+                                {/* <ImageMagnifier imgUrl={activeImage} /> */}
                             </div>
                         </Col>
                     </Row>
