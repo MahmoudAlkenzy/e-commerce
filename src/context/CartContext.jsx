@@ -10,10 +10,11 @@ import { toast } from 'react-hot-toast';
 export const CartContext = createContext();
 export function CartContextProvider({ children }) {
     const { token } = useToken();
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(null);
     const [numOfCartItem, setNumOfCartItem] = useState(0);
     const [cartPrice, setCartPrice] = useState(0);
     const [cartId, setcartId] = useState(null);
+    console.log('cartid', cartId);
     async function getUserCart() {
         try {
             const { data } = await axios.get(`${BaseUrl}/api/v1/cart`, {
@@ -27,11 +28,11 @@ export function CartContextProvider({ children }) {
             setNumOfCartItem(data.numOfCartItems);
             setcartId(data.data._id);
         } catch (error) {
-            console.log('err:', error.message);
+            // console.log('err:', error.message);
         }
     }
     async function updateCart({ id, count }) {
-        console.log(count, id);
+        // console.log(count, id);
         try {
             const { data } = await axios.put(
                 `${BaseUrl}/api/v1/cart/${id}`,
@@ -43,11 +44,11 @@ export function CartContextProvider({ children }) {
             setNumOfCartItem(data.numOfCartItems);
             setcartId(data.data._id);
 
-            console.log(
-                data.data.products,
-                data.data.totalCartPrice,
-                data.numOfCartItems
-            );
+            // console.log(
+            //     data.data.products,
+            //     data.data.totalCartPrice,
+            //     data.numOfCartItems
+            // );
             toast.success('Product count updated');
         } catch (error) {
             throw new Error(error.message);
@@ -68,7 +69,7 @@ export function CartContextProvider({ children }) {
             setcartId(data.data._id);
 
             toast.success('Product deleted ');
-            console.log(data);
+            // console.log(data);
         } catch (error) {
             throw new Error(error.message);
         }

@@ -13,13 +13,12 @@ export default function Payment() {
     const navigae = useNavigate();
     const { cartId, clearCart } = useContext(CartContext);
     const { token } = useToken();
+    const shippingAddress = {
+        details: detaildRef.current?.value,
+        phone: phonedRef.current?.value,
+        city: cityRef.current?.value,
+    };
     async function createCashOrder() {
-        const shippingAddress = {
-            details: detaildRef.current.value,
-            phone: phonedRef.current.value,
-            city: cityRef.current.value,
-        };
-
         try {
             const { data } = await axios.post(
                 `${BaseUrl}/api/v1/orders/${cartId}`,
@@ -39,6 +38,24 @@ export default function Payment() {
         }
     }
 
+    async function cheackOutSession() {
+        try {
+            const { data } = await axios.post(
+                `${BaseUrl}/api/v1/orders/checkout-session/${cartId}`,
+                shippingAddress,
+                {
+                    headers: { token },
+                    params: {
+                        url: 'http://localhost:5173/#',
+                    },
+                }
+            );
+            console.log(data);
+            window.open(data.session.url);
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
     return (
         <>
             <div className="w-50 mx-auto d-flex flex-column gap-3 py-5">
@@ -78,9 +95,14 @@ export default function Payment() {
                         type="text"
                     />
                 </div>
-                <button onClick={createCashOrder} className="btn btn-main">
-                    Place order
-                </button>
+                <div className="d-flex justify-content-between">
+                    <button onClick={createCashOrder} className="btn btn-main">
+                        Place cash payment order
+                    </button>
+                    <button onClick={cheackOutSession} className="btn btn-main">
+                        Check online session payment
+                    </button>
+                </div>
             </div>
         </>
     );
