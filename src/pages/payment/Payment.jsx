@@ -13,6 +13,31 @@ export default function Payment() {
     const navigae = useNavigate();
     const { cartId, clearCart } = useContext(CartContext);
     const { token } = useToken();
+    async function createCashOrder() {
+        const shippingAddress = {
+            details: detaildRef.current.value,
+            phone: phonedRef.current.value,
+            city: cityRef.current.value,
+        };
+
+        try {
+            const { data } = await axios.post(
+                `${BaseUrl}/api/v1/orders/${cartId}`,
+                shippingAddress,
+                {
+                    headers: { token },
+                }
+            );
+            clearCart({ isPayment: true });
+            toast.success('create order success');
+            console.log(data);
+            setTimeout(() => {
+                navigae('/products');
+            }, 1500);
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
 
     return (
         <>
@@ -53,7 +78,9 @@ export default function Payment() {
                         type="text"
                     />
                 </div>
-                <button className="btn btn-main">Place order</button>
+                <button onClick={createCashOrder} className="btn btn-main">
+                    Place order
+                </button>
             </div>
         </>
     );
