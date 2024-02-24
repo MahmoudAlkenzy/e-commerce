@@ -15,6 +15,8 @@ import ProdaucDetails from './pages/prodaucDetails/ProdaucDetails';
 import { CartContextProvider } from './context/CartContext';
 import Payment from './pages/payment/Payment';
 import AllOrders from './pages/allOrdres/AllOrders';
+import Profile from './pages/profile/profile';
+import Category from './pages/category/Category';
 
 const router = createHashRouter([
     {
@@ -61,6 +63,14 @@ const router = createHashRouter([
                     </ProtectedRoute>
                 ),
             },
+            {
+                path: 'profile',
+                element: (
+                    <ProtectedRoute>
+                        <Profile />
+                    </ProtectedRoute>
+                ),
+            },
             { path: 'login', element: <Login /> },
             { path: 'register', element: <SignUp /> },
             {
@@ -76,6 +86,14 @@ const router = createHashRouter([
                 element: (
                     <ProtectedRoute>
                         <Categories />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: 'category/:category',
+                element: (
+                    <ProtectedRoute>
+                        <Category />
                     </ProtectedRoute>
                 ),
             },

@@ -10,5 +10,6 @@ export default function useProducts() {
         queryFn: getProducts,
         queryKey: ['products'],
     });
+
     return { products, error, isLoading };
 }

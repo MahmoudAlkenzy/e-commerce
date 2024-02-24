@@ -14,7 +14,6 @@ export function CartContextProvider({ children }) {
     const [numOfCartItem, setNumOfCartItem] = useState(0);
     const [cartPrice, setCartPrice] = useState(0);
     const [cartId, setcartId] = useState(null);
-    console.log('cartid', cartId);
     async function getUserCart() {
         try {
             const { data } = await axios.get(`${BaseUrl}/api/v1/cart`, {
@@ -22,7 +21,6 @@ export function CartContextProvider({ children }) {
                     token: localStorage.getItem('tkn'),
                 },
             });
-            console.log(data, localStorage.getItem('tkn'));
             setCart(data.data.products);
             localStorage.setItem('userId', data.data.cartOwner);
             setCartPrice(data.data.totalCartPrice);
@@ -90,7 +88,9 @@ export function CartContextProvider({ children }) {
         }
     }
     useEffect(() => {
-        getUserCart();
+        if (localStorage.getItem('tkn')) {
+            getUserCart();
+        }
     }, []);
 
     return (
