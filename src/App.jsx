@@ -17,6 +17,7 @@ import Payment from './pages/payment/Payment';
 import AllOrders from './pages/allOrdres/AllOrders';
 import Profile from './pages/profile/profile';
 import Category from './pages/category/Category';
+import Brand from './pages/brand/Brand';
 
 const router = createHashRouter([
     {
@@ -102,6 +103,14 @@ const router = createHashRouter([
                 element: (
                     <ProtectedRoute>
                         <Brands />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: 'brand/:brand',
+                element: (
+                    <ProtectedRoute>
+                        <Brand />
                     </ProtectedRoute>
                 ),
             },

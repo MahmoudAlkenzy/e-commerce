@@ -22,7 +22,7 @@ export default function Category() {
 
     return (
         <Container style={{ minHeight: 'calc(100vh - 300px)' }}>
-            <Row className="h-100 py-5">
+            <Row className="h-100 py-5 ">
                 {catProdects.length ? (
                     <>
                         <h2 className="py-4">

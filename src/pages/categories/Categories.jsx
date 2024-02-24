@@ -11,7 +11,7 @@ export default function Categories() {
     return (
         <>
             <Container>
-                <Row>
+                <Row className="g-4">
                     {categories.map((categ, idx) => {
                         return (
                             <Col
