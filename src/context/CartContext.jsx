@@ -91,7 +91,7 @@ export function CartContextProvider({ children }) {
         if (localStorage.getItem('tkn')) {
             getUserCart();
         }
-    }, []);
+    }, [token]);
 
     return (
         <CartContext.Provider

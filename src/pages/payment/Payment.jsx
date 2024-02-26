@@ -1,61 +1,22 @@
-import axios from 'axios';
-import { BaseUrl } from '../../services/baseUrl';
-import { useContext, useRef } from 'react';
-import { CartContext } from '../../context/CartContext';
+import { useRef } from 'react';
 import { useToken } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-hot-toast';
+import { useCashOrder } from '../../hooks/useCashOrder';
+import { useCheackOutSession } from '../../hooks/useCheackOutSession';
+import { SpinnerMini } from './../../ui/spinners/Spinners';
 
 export default function Payment() {
     const detaildRef = useRef();
     const phonedRef = useRef();
     const cityRef = useRef();
     const navigae = useNavigate();
-    const { cartId, clearCart } = useContext(CartContext);
-    const { token } = useToken();
-    console.log(cartId);
+    const { createCashOrder, isCreating } = useCashOrder();
+    const { cheackOutSession, isLoading } = useCheackOutSession();
     const shippingAddress = {
         details: detaildRef.current?.value,
         phone: phonedRef.current?.value,
         city: cityRef.current?.value,
     };
-    async function createCashOrder() {
-        try {
-            const { data } = await axios.post(
-                `${BaseUrl}/api/v1/orders/${cartId}`,
-                shippingAddress,
-                {
-                    headers: { token },
-                }
-            );
-            clearCart({ isPayment: true });
-            toast.success('create order success');
-            console.log(data);
-            setTimeout(() => {
-                navigae('/products');
-            }, 1500);
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    }
-    async function cheackOutSession() {
-        try {
-            const { data } = await axios.post(
-                `${BaseUrl}/api/v1/orders/checkout-session/${cartId}`,
-                shippingAddress,
-                {
-                    headers: { token },
-                    params: {
-                        url: `${window.location.origin}/#`,
-                    },
-                }
-            );
-            console.log(data);
-            window.open(data.session.url, '_self');
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    }
     return (
         <>
             <div className="w-50 mx-auto d-flex flex-column gap-3 py-5">
@@ -96,11 +57,33 @@ export default function Payment() {
                     />
                 </div>
                 <div className="d-flex justify-content-between">
-                    <button onClick={createCashOrder} className="btn btn-main">
+                    <button
+                        disabled={isCreating}
+                        onClick={() =>
+                            createCashOrder(
+                                { shippingAddress },
+                                {
+                                    onSuccess: () =>
+                                        setTimeout(() => {
+                                            navigae('/products');
+                                        }, 1500),
+                                }
+                            )
+                        }
+                        className="btn btn-main"
+                    >
                         Place cash payment order
                     </button>
-                    <button onClick={cheackOutSession} className="btn btn-main">
-                        Check online session payment
+                    <button
+                        disabled={isLoading}
+                        onClick={cheackOutSession}
+                        className="btn btn-main"
+                    >
+                        {isLoading ? (
+                            <SpinnerMini />
+                        ) : (
+                            'Check online session payment'
+                        )}
                     </button>
                 </div>
             </div>
