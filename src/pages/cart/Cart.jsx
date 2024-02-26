@@ -46,7 +46,10 @@ export default function Cart() {
                         </p>
                     </Row>
                     <Row>
-                        <Col className="col-4 gap-2 ms-auto d-flex justify-content-end pb-4 align-items-center">
+                        <Col
+                            md={4}
+                            className="gap-2 ms-auto d-flex justify-content-end pb-4 align-items-center"
+                        >
                             <button
                                 onClick={clearCart}
                                 className="btn btn-danger"
@@ -76,13 +79,12 @@ export default function Cart() {
                                     <Col className="col-3 align-items-center d-flex flex-column flex-md-row ">
                                         <div className="position-relative">
                                             <img
-                                                className="  mx-2"
                                                 style={{
                                                     width: '50px',
                                                     height: '70px',
                                                 }}
                                                 src={pro.product.imageCover}
-                                                alt=""
+                                                alt={pro.product.title}
                                             />
                                             <OverlayTrigger
                                                 key="right"
@@ -106,7 +108,10 @@ export default function Cart() {
                                             </OverlayTrigger>
                                         </div>
                                         <span className=" flex-grow-1 fw-semibold fs-7">
-                                            {pro.product.title}
+                                            {pro.product.title
+                                                ?.split(' ')
+                                                .splice(0, 2)
+                                                .join(' ')}
                                         </span>
                                     </Col>
                                     <Col className="col-3 fw-semibold">
