@@ -6,9 +6,9 @@ export function useRemoveFromwhishList() {
     const queryClient = useQueryClient();
     const { mutate: removeFromwishlist, isRemoveing } = useMutation({
         mutationFn: apiRemoveFromWishlist,
-        onSuccess: (data) => {
-            console.log(data);
-            toast.success('scs');
+        onSuccess: ({ data, isAddToCart }) => {
+            // console.log(isAddToCart);
+            !isAddToCart && toast.success(data.message);
             queryClient.invalidateQueries({ queryKey: ['userWishlist'] });
         },
         onError: (err) => {

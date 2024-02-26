@@ -30,13 +30,13 @@ export async function addToWishlist({ productId }) {
     }
 }
 
-export async function removeFromWishlist({ productId }) {
+export async function removeFromWishlist({ productId, isAddToCart }) {
     try {
         const { data } = await axios.delete(
             `${BaseUrl}/api/v1/wishlist/${productId}`,
             { headers: { token } }
         );
-        return data;
+        return { data, isAddToCart };
     } catch (error) {
         throw new Error(
             error.response.data.errors?.msg || error.response.data.message
