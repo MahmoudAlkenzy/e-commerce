@@ -12,7 +12,6 @@ export default function Home() {
     const { isLoading: isLoading1, products } = useProducts();
     const { isLoading: isLoading2, categories } = useCategoies();
 
-    console.log(products);
     if (isLoading1 || isLoading2) return <Spinner />;
 
     return (

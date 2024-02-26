@@ -11,7 +11,6 @@ import { IoArrowBack } from 'react-icons/io5';
 export default function Cart() {
     const { cart, updateCart, deleteItem, clearCart, cartPrice } =
         useContext(CartContext);
-    console.log(cart);
     if (!cart) return <Spinner />;
 
     return (

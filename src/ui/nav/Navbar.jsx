@@ -3,7 +3,6 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import Logo from '../../images/logo.png';
-import SocialList from '../socialMediaList/SocialList';
 import { useToken } from '../../context/AuthContext';
 import { IoCartOutline } from 'react-icons/io5';
 import { RxAvatar } from 'react-icons/rx';
@@ -26,7 +25,7 @@ export function NavBar() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     {token && (
-                        <Nav className="mx-auto  align-items-center fw-semibold">
+                        <Nav className="mx-auto  align-items-center fw-medium fs-">
                             <Link className=" nav-link" to="/products">
                                 Home
                             </Link>
@@ -39,6 +38,9 @@ export function NavBar() {
                             </Link>
                             <Link className=" nav-link" to="/allorders">
                                 All orders
+                            </Link>
+                            <Link className=" nav-link" to="/whishlist">
+                                Whish list
                             </Link>
                         </Nav>
                     )}

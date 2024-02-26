@@ -10,10 +10,8 @@ export default function Brand() {
     const { products, isLoading } = useProducts();
 
     if (isLoading) return <Spinner />;
-    console.log(brand, products);
     const proBrands = products.filter((pro) => pro.brand.slug === brand);
 
-    console.log('proBrands', proBrands);
     return (
         <>
             <Container style={{ minHeight: 'calc(100vh - 300px)' }}>

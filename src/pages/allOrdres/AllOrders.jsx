@@ -9,7 +9,6 @@ export default function AllOrders() {
     // }, []);
     const { orders, isLoading } = useOrders();
     if (isLoading) return <Spinner />;
-    console.log(orders);
     return (
         <Container className="py-4">
             <Row className="g-3">

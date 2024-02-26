@@ -6,6 +6,8 @@ export async function getBrands() {
         const { data } = await axios.get(`${BaseUrl}/api/v1/brands`);
         return data.data;
     } catch (error) {
-        throw new Error(error.message);
+        throw new Error(
+            error.response.data.errors?.msg || error.response.data.message
+        );
     }
 }

@@ -20,6 +20,7 @@ import { AuthContextProvider } from './context/AuthContext';
 import { RouterProvider, createHashRouter } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
+import Wishlist from './pages/whishlist/Wishlist';
 
 const router = createHashRouter([
     {
@@ -113,6 +114,14 @@ const router = createHashRouter([
                 element: (
                     <ProtectedRoute>
                         <Brand />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: 'whishlist',
+                element: (
+                    <ProtectedRoute>
+                        <Wishlist />
                     </ProtectedRoute>
                 ),
             },

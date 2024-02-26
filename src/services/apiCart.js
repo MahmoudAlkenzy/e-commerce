@@ -15,7 +15,9 @@ export async function addToCart({ productId, token, isHome }) {
         console.log(data);
         return data;
     } catch (error) {
-        throw new Error(error.message);
+        throw new Error(
+            error.response.data.errors?.msg || error.response.data.message
+        );
     }
 }
 

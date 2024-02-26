@@ -12,7 +12,9 @@ export async function createCashOrder({ cartId, shippingAddress }) {
             }
         );
     } catch (error) {
-        throw new Error(error.message);
+        throw new Error(
+            error.response.data.errors?.msg || error.response.data.message
+        );
     }
 }
 export async function cheackOutSession({ cartId, shippingAddress }) {
@@ -29,6 +31,8 @@ export async function cheackOutSession({ cartId, shippingAddress }) {
         );
         return data;
     } catch (error) {
-        throw new Error(error.message);
+        throw new Error(
+            error.response.data.errors?.msg || error.response.data.message
+        );
     }
 }

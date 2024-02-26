@@ -18,7 +18,6 @@ export function AuthContextProvider({ children }) {
     function getUserData() {
         const userData = jwtDecode(localStorage.getItem('tkn'));
         setUserData(userData);
-        console.log(userData);
     }
 
     if (!token && token !== null) return;
