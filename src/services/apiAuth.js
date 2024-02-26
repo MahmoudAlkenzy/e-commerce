@@ -22,6 +22,8 @@ export async function login({ userData }) {
         return data;
     } catch (error) {
         console.log(error);
-        throw new Error(error.message);
+        throw new Error(
+            error.response.data.errors?.msg || error.response.data.message
+        );
     }
 }

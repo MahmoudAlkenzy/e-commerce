@@ -2,7 +2,7 @@ import { jwtDecode } from 'jwt-decode';
 import { createContext, useContext, useEffect, useState } from 'react';
 /* eslint-disable react/prop-types */ // TODO: upgrade to latest eslint tooling
 
-const authContext = createContext();
+export const authContext = createContext();
 export function AuthContextProvider({ children }) {
     const [token, setToken] = useState(null);
     const [userData, setUserData] = useState(null);
@@ -17,6 +17,7 @@ export function AuthContextProvider({ children }) {
         setUserData(userData);
         console.log(userData);
     }
+
     if (!token && token !== null) return;
     return (
         <authContext.Provider
@@ -28,8 +29,8 @@ export function AuthContextProvider({ children }) {
 }
 
 export function useToken() {
-    const { token, setToken } = useContext(authContext);
+    const { token, setToken, getUserData } = useContext(authContext);
     if (token === undefined)
         throw new Error('this context used out the provider scoop');
-    return { token, setToken };
+    return { token, setToken, getUserData };
 }

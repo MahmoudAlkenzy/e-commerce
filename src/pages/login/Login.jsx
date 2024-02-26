@@ -20,13 +20,14 @@ export function Login() {
         useFormik({
             initialValues: loginData,
             validationSchema: loginSchema,
-            onSubmit: (userData) =>
+            onSubmit: (userData) => {
                 login(
                     { userData },
                     {
                         onSuccess: () => navigate('/products'),
                     }
-                ),
+                );
+            },
         });
     return (
         <Container>

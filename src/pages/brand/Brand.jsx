@@ -16,7 +16,7 @@ export default function Brand() {
     console.log('proBrands', proBrands);
     return (
         <>
-            <Container style={{ minHeight: '100vh' }}>
+            <Container style={{ minHeight: 'calc(100vh - 300px)' }}>
                 <Row className="h-100">
                     {!proBrands.length ? (
                         <div className=" d-flex justify-content-center align-items-center ">

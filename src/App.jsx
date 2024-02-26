@@ -1,23 +1,25 @@
-import { RouterProvider, createHashRouter } from 'react-router-dom';
 import Layout from './pages/layout/Layout';
 import SignUp from './pages/signup/Signup';
 import { Login } from './pages/login/Login';
 import Cart from './pages/cart/Cart';
 import Home from './pages/home/Home';
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { Toaster } from 'react-hot-toast';
-import { AuthContextProvider } from './context/AuthContext';
 import Categories from './pages/categories/Categories';
 import Brands from './pages/brands/Brands';
 import ProtectedRoute from './ui/protectedRoute/ProtectedRoute';
 import ProdaucDetails from './pages/prodaucDetails/ProdaucDetails';
-import { CartContextProvider } from './context/CartContext';
 import Payment from './pages/payment/Payment';
 import AllOrders from './pages/allOrdres/AllOrders';
-import Profile from './pages/profile/profile';
+import Profile from './pages/profile/Profile';
 import Category from './pages/category/Category';
 import Brand from './pages/brand/Brand';
+
+import { CartContextProvider } from './context/CartContext';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { AuthContextProvider } from './context/AuthContext';
+
+import { RouterProvider, createHashRouter } from 'react-router-dom';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { Toaster } from 'react-hot-toast';
 
 const router = createHashRouter([
     {

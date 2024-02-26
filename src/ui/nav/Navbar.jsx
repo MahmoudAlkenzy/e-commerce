@@ -6,7 +6,7 @@ import Logo from '../../images/logo.png';
 import SocialList from '../socialMediaList/SocialList';
 import { useToken } from '../../context/AuthContext';
 import { IoCartOutline } from 'react-icons/io5';
-
+import { RxAvatar } from 'react-icons/rx';
 import SignOutButton from '../signoutButton/SignOutButton';
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
@@ -54,6 +54,14 @@ export function NavBar() {
                                     <IoCartOutline />
                                     <span className="position-absolute fs-8 top-0 start-100  translate-middle-x badge rounded-pill bg-danger">
                                         {numOfCartItem}
+                                    </span>
+                                </Link>
+                                <Link
+                                    to="/profile"
+                                    className="  nav-link fs-4 mx-2 "
+                                >
+                                    <span className="fs-4">
+                                        <RxAvatar />
                                     </span>
                                 </Link>
                                 <SignOutButton />

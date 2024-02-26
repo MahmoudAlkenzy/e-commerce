@@ -32,7 +32,7 @@ export default function Footer() {
                         <div>
                             <h5 className=" mb-3">Account</h5>
 
-                            <Link className="text-light" to="/">
+                            <Link className="text-light" to="/profile">
                                 <p>My account </p>
                             </Link>
                             <Link className="text-light" to="/register">

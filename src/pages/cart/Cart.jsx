@@ -128,6 +128,7 @@ export default function Cart() {
                                         </button>{' '}
                                         <span className="">{pro.count}</span>{' '}
                                         <button
+                                            disabled={pro.count <= 1}
                                             onClick={() =>
                                                 updateCart({
                                                     count: pro.count - 1,
