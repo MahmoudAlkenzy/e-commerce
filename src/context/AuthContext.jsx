@@ -7,7 +7,10 @@ export function AuthContextProvider({ children }) {
     const [token, setToken] = useState(null);
     const [userData, setUserData] = useState(null);
     useEffect(() => {
-        if (localStorage.getItem('tkn') !== undefined) {
+        if (
+            localStorage.getItem('tkn') !== undefined &&
+            localStorage.getItem('tkn') !== null
+        ) {
             setToken(localStorage.getItem('tkn'));
             getUserData();
         }
