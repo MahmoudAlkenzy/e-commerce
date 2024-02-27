@@ -21,6 +21,7 @@ import { RouterProvider, createHashRouter } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
 import Wishlist from './pages/whishlist/Wishlist';
+import Forgetpassweord from './pages/forgetPassword/forgetpassweord';
 
 const router = createHashRouter([
     {
@@ -77,6 +78,7 @@ const router = createHashRouter([
             },
             { path: 'login', element: <Login /> },
             { path: 'register', element: <SignUp /> },
+            { path: 'forget-password', element: <Forgetpassweord /> },
             {
                 path: 'cart',
                 element: (

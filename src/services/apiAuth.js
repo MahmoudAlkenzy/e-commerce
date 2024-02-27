@@ -27,3 +27,21 @@ export async function login({ userData }) {
         );
     }
 }
+
+export async function forgetPassword({ email }) {
+    console.log(email);
+    try {
+        const { data } = await axios.post(
+            `${BaseUrl}/api/v1/auth/forgotPasswords`,
+            {
+                email,
+            }
+        );
+        console.log(data);
+        return data;
+    } catch (error) {
+        throw new Error(
+            error.response.data.errors?.msg || error.response.data.message
+        );
+    }
+}

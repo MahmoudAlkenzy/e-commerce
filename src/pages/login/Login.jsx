@@ -1,8 +1,8 @@
 import { useFormik } from 'formik';
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import * as Yup from 'yup';
 import { useLogin } from '../../hooks/useLogin';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SpinnerMini } from '../../ui/spinners/Spinners';
 
 const loginSchema = Yup.object({
@@ -67,12 +67,15 @@ export function Login() {
                             {errors.password}
                         </div>
                     )}
-                    <button
-                        type="submit"
-                        className="btn bg-main align-self-end text-white"
-                    >
-                        {isLoading ? <SpinnerMini /> : 'Login'}
-                    </button>
+                    <Col className="d-flex ">
+                        <Link to="/forget-password">Forget password?</Link>
+                        <button
+                            type="submit"
+                            className="btn bg-main ms-auto text-white"
+                        >
+                            {isLoading ? <SpinnerMini /> : 'Login'}
+                        </button>
+                    </Col>
                 </form>
             </Row>
         </Container>
