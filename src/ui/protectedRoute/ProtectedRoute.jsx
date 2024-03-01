@@ -1,4 +1,3 @@
-import { useToken } from '../../context/AuthContext';
 import { Navigate } from 'react-router-dom';
 /* eslint-disable react/prop-types */ // TODO: upKgrade to latest eslint tooling
 

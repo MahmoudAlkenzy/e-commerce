@@ -6,6 +6,9 @@ export const authContext = createContext();
 export function AuthContextProvider({ children }) {
     const [token, setToken] = useState(null);
     const [userData, setUserData] = useState(null);
+    const [verifyState, setVerifyState] = useState({ status: undefined });
+    const [useremail, setEmail] = useState(null);
+
     useEffect(() => {
         if (
             localStorage.getItem('tkn') !== undefined &&
@@ -23,7 +26,16 @@ export function AuthContextProvider({ children }) {
     if (!token && token !== null) return;
     return (
         <authContext.Provider
-            value={{ token, setToken, getUserData, userData }}
+            value={{
+                token,
+                setToken,
+                getUserData,
+                userData,
+                verifyState,
+                setVerifyState,
+                useremail,
+                setEmail,
+            }}
         >
             {children}
         </authContext.Provider>

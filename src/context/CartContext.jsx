@@ -21,11 +21,14 @@ export function CartContextProvider({ children }) {
                     token: localStorage.getItem('tkn'),
                 },
             });
-            setCart(data.data.products);
-            localStorage.setItem('userId', data.data.cartOwner);
-            setCartPrice(data.data.totalCartPrice);
-            setNumOfCartItem(data.numOfCartItems);
-            setcartId(data.data._id);
+            console.log(data);
+            if (data.numOfCartItems !== 0) {
+                setCart(data.data.products);
+                localStorage.setItem('userId', data.data.cartOwner);
+                setCartPrice(data.data.totalCartPrice);
+                setNumOfCartItem(data.numOfCartItems);
+                setcartId(data.data._id);
+            }
         } catch (error) {
             // console.log('err:', error.message);
         }
