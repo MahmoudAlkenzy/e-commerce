@@ -8,10 +8,16 @@ import second from '../../images/slider/2.jpg';
 import third from '../../images/slider/3.jpg';
 import forth from '../../images/slider/4.jpg';
 import useCategoies from '../../hooks/useCategoies';
+import { useRef, useState } from 'react';
+import SearchInput from '../../ui/searchInput/SearchInput';
 export default function Home() {
     const { isLoading: isLoading1, products } = useProducts();
     const { isLoading: isLoading2, categories } = useCategoies();
-
+    const [searchTearm, setSearchTearm] = useState('');
+    const filterd = products?.filter((cat) =>
+        cat.title.includes(`${String(searchTearm)}`)
+    );
+    console.log(searchTearm, filterd);
     if (isLoading1 || isLoading2) return <Spinner />;
 
     return (
@@ -21,8 +27,12 @@ export default function Home() {
                     <Slider images={[first, second, third, forth]} />
                 </div>
                 <Slider Categories={categories} />
+                <SearchInput
+                    setSearchTearm={setSearchTearm}
+                    searchTearm={searchTearm}
+                />
                 <Row className="row-gap-3 pt-5">
-                    {products?.map((product, idx) => {
+                    {filterd?.map((product, idx) => {
                         return <Product product={product} key={idx} />;
                     })}
                 </Row>

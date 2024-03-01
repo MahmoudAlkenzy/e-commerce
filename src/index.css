@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@100;200;300;400;500;600&display=swap');
 :root {
     --main-color: #db4444;
+    --main-50-color: #db444479;
     --light-color: #f0f3f2;
     --shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
         rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
@@ -62,12 +63,16 @@ a:hover {
 .text-main {
     color: var(--main-color);
 }
+.bg-50-main {
+    background-color: var(--main-50-color);
+}
 .bg-main {
     background-color: var(--main-color) !important;
 }
 .bg-main-light {
     background-color: var(--light-color) !important;
 }
+
 .fs-7 {
     font-size: 0.9rem;
 }
@@ -123,4 +128,10 @@ a:hover {
     background-size: auto auto;
     width: 100dwh;
     min-height: calc(100vh - 70px);
+}
+.subCategory {
+    transition: 0.4s;
+}
+.subCategory:hover {
+    box-shadow: 0px 0px 29px -4px rgba(0, 0, 0, 0.75);
 }

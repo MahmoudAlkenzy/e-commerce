@@ -21,6 +21,15 @@ export default function Wishlist() {
     if (isLoading) return <Spinner />;
     console.log(data.data);
 
+    if (data.data.length === 0)
+        return (
+            <div className="min-vh-75 text-center d-flex  justify-content-center align-items-center">
+                <h1 className="">
+                    {' '}
+                    {`You don't have any product in your wishlist`}
+                </h1>
+            </div>
+        );
     return (
         <>
             <Container>
