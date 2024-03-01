@@ -45,3 +45,27 @@ export async function forgetPassword({ email }) {
         );
     }
 }
+
+export async function verifyResetCode({ resetCode }) {
+    try {
+        const { data } = await axios.post(
+            `${BaseUrl}/api/v1/auth/verifyResetCode`,
+            { resetCode }
+        );
+        console.log(data);
+        return data;
+    } catch (error) {
+        throw new Error(
+            error.response.data.errors?.msg || error.response.data.message
+        );
+    }
+}
+export async function resetPassword({ userData }) {
+    try {
+        await axios.put(`${BaseUrl}/api/v1/auth/resetPassword`, userData);
+    } catch (error) {
+        throw new Error(
+            error.response.data.errors?.msg || error.response.data.message
+        );
+    }
+}
