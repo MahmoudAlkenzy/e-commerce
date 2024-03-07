@@ -15,7 +15,7 @@ export default function Home() {
     const { isLoading: isLoading2, categories } = useCategoies();
     const [searchTearm, setSearchTearm] = useState('');
     const filterd = products?.filter((cat) =>
-        cat.title.includes(`${String(searchTearm)}`)
+        cat.title.toLowerCase().includes(searchTearm.toLowerCase())
     );
     console.log(searchTearm, filterd);
     if (isLoading1 || isLoading2) return <Spinner />;
