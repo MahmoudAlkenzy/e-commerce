@@ -11,32 +11,25 @@ import useCategoies from '../../hooks/useCategoies';
 import { useRef, useState } from 'react';
 import SearchInput from '../../ui/searchInput/SearchInput';
 export default function Home() {
-    const { isLoading: isLoading1, products } = useProducts();
-    const { isLoading: isLoading2, categories } = useCategoies();
-    const [searchTearm, setSearchTearm] = useState('');
-    const filterd = products?.filter((cat) =>
-        cat.title.toLowerCase().includes(searchTearm.toLowerCase())
-    );
-    console.log(searchTearm, filterd);
-    if (isLoading1 || isLoading2) return <Spinner />;
-
-    return (
-        <>
-            <Container className="py-5 ">
-                <div>
-                    <Slider images={[first, second, third, forth]} />
-                </div>
-                <Slider Categories={categories} />
-                <SearchInput
-                    setSearchTearm={setSearchTearm}
-                    searchTearm={searchTearm}
-                />
-                <Row className="row-gap-3 pt-5">
-                    {filterd?.map((product, idx) => {
-                        return <Product product={product} key={idx} />;
-                    })}
-                </Row>
-            </Container>
-        </>
-    );
+  const { isLoading: isLoading1, products } = useProducts();
+  const { isLoading: isLoading2, categories } = useCategoies();
+  const [searchTearm, setSearchTearm] = useState('');
+  const filterd = products?.filter((cat) => cat.title.toLowerCase().includes(searchTearm.toLowerCase()));
+  if (isLoading1 || isLoading2) return <Spinner />;
+  return (
+    <>
+      <Container className="py-5 ">
+        <div>
+          <Slider images={[first, second, third, forth]} />
+        </div>
+        <Slider Categories={categories} />
+        <SearchInput setSearchTearm={setSearchTearm} searchTearm={searchTearm} />
+        <Row className="row-gap-3 pt-5">
+          {filterd?.map((product, idx) => {
+            return <Product product={product} key={idx} />;
+          })}
+        </Row>
+      </Container>
+    </>
+  );
 }

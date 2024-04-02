@@ -6,18 +6,17 @@ import { CartContext } from './../context/CartContext.jsx';
 import { useNavigate } from 'react-router-dom';
 
 export function useAddToCart() {
-    const navigate = useNavigate();
-    const { getUserCart } = useContext(CartContext);
+  const navigate = useNavigate();
+  const { getUserCart } = useContext(CartContext);
 
-    const { mutate: addProToCart, isLoading } = useMutation({
-        mutationFn: addToCart,
-        onSuccess: (cartData) => {
-            console.log(cartData.data.products);
-            getUserCart();
-            toast.success(cartData.message);
-        },
-        onError: (err) => toast.error(err),
-    });
+  const { mutate: addProToCart, isLoading } = useMutation({
+    mutationFn: addToCart,
+    onSuccess: (cartData) => {
+      getUserCart();
+      toast.success(cartData.message);
+    },
+    onError: (err) => toast.error(err),
+  });
 
-    return { addProToCart, isLoading };
+  return { addProToCart, isLoading };
 }

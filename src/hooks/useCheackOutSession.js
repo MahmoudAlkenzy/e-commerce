@@ -11,7 +11,6 @@ export function useCheackOutSession() {
         mutationFn: ({ shippingAddress }) =>
             apicheackOutSession({ cartId, shippingAddress }),
         onSuccess: (data) => {
-            console.log(data);
             window.open(data.session.url, '_self');
         },
         onError: (err) => {

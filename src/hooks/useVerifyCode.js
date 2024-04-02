@@ -5,19 +5,17 @@ import { useContext } from 'react';
 import { authContext } from '../context/AuthContext';
 
 export default function useVerifyCode() {
-    const { verifyState, setVerifyState } = useContext(authContext);
+  const { verifyState, setVerifyState } = useContext(authContext);
 
-    const { mutate: verifyCode, isLoading: isVerifing } = useMutation({
-        mutationFn: verifyResetCode,
-        onSuccess: (data) => {
-            console.log(data);
-            setVerifyState(data);
-            toast.success(data.status);
-        },
-        onError: (err) => {
-            console.log(err);
-            toast.error(`${err}`);
-        },
-    });
-    return { verifyCode, isVerifing, verifyState };
+  const { mutate: verifyCode, isLoading: isVerifing } = useMutation({
+    mutationFn: verifyResetCode,
+    onSuccess: (data) => {
+      setVerifyState(data);
+      toast.success(data.status);
+    },
+    onError: (err) => {
+      toast.error(`${err}`);
+    },
+  });
+  return { verifyCode, isVerifing, verifyState };
 }
