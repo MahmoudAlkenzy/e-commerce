@@ -1,6 +1,3 @@
-import { useRef } from 'react';
-import { useToken } from '../../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
 import { useCashOrder } from '../../hooks/useCashOrder';
 import { useCheackOutSession } from '../../hooks/useCheackOutSession';
 import { SpinnerMini } from './../../ui/spinners/Spinners';
@@ -10,15 +7,25 @@ import * as yup from 'yup';
 export default function Payment() {
   const { createCashOrder, isCreating } = useCashOrder();
   const { cheackOutSession, isLoading } = useCheackOutSession();
+  const paymentSchema = yup.object({
+    details: yup.string().required().min(10, 'we need more details'),
+    phone: yup
+      .string()
+      .required()
+      .matches(/^01[125][0-9]{8}/, 'must be egyption number'),
+
+    city: yup.string().required(),
+  });
   const initialValues = {
     details: '',
     phone: '',
     city: '',
   };
 
-  const { errors, handleBlur, handleChange, handleSubmit, values } = useFormik({
+  const { touched, errors, handleBlur, handleChange, handleSubmit, values } = useFormik({
     initialValues,
-    onSubmit: (value) => console.log(value),
+    validationSchema: paymentSchema,
+    onSubmit: (value) => createCashOrder({ shippingAddress: value }),
   });
   //   const shippingAddress = {
   //     details: detaildRef.current?.value,
@@ -41,6 +48,7 @@ export default function Payment() {
             id="details"
             type="text"
           />
+          {errors.details && touched.details && <div className="alert-danger alert">{errors.details}</div>}
         </div>
         <div>
           <label className="mb-1" htmlFor="phone">
@@ -53,8 +61,9 @@ export default function Payment() {
             placeholder="Enter your phone"
             className="form-control"
             id="phone"
-            type="number"
+            type="text"
           />
+          {errors.phone && touched.phone && <div className="alert-danger alert">{errors.phone}</div>}
         </div>
         <div>
           <label className="mb-1" htmlFor="city">
@@ -69,6 +78,7 @@ export default function Payment() {
             id="city"
             type="text"
           />
+          {errors.city && touched.city && <div className="alert-danger alert">{errors.city}</div>}
         </div>
         <div className="d-flex justify-content-between">
           <button

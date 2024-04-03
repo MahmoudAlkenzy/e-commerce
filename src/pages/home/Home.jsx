@@ -8,7 +8,7 @@ import second from '../../images/slider/2.jpg';
 import third from '../../images/slider/3.jpg';
 import forth from '../../images/slider/4.jpg';
 import useCategoies from '../../hooks/useCategoies';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import SearchInput from '../../ui/searchInput/SearchInput';
 export default function Home() {
   const { isLoading: isLoading1, products } = useProducts();

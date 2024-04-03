@@ -7,14 +7,14 @@ import { Link } from 'react-router-dom';
 import { FaCartPlus } from 'react-icons/fa6';
 import { useAddToCart } from '../../hooks/useCart';
 import { useToken } from '../../context/AuthContext';
-import { Spinner, SpinnerMini } from '../spinners/Spinners';
+import { SpinnerMini } from '../spinners/Spinners';
 import { useWishlist } from '../../hooks/useWhishlist';
 import AddToWishlistButton from '../addToWishlistButton/AddToWishlistButton';
 
 /* eslint-disable react/prop-types */ // TODO: upKgrade to latest eslint tooling
 
 function Product({ product }) {
-  const { data, isLoading: isAdding } = useWishlist();
+  const { data } = useWishlist();
   const { addProToCart, isLoading } = useAddToCart();
   const { token } = useToken();
   // if (isAdding) return <Spinner />;
