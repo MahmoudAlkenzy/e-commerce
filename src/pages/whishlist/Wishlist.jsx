@@ -20,7 +20,7 @@ export default function Wishlist() {
   }
   if (isLoading) return <Spinner />;
 
-  if (data.data.length === 0)
+  if (data?.data?.length === 0)
     return (
       <div className="min-vh-75 text-center d-flex  justify-content-center align-items-center">
         <h1 className=""> {`You don't have any product in your wishlist`}</h1>
@@ -36,7 +36,7 @@ export default function Wishlist() {
             <Col className="col-3">Remove</Col>
             <Col className="col-3">To cart</Col>
           </Row>
-          {data.data.map((product, idx) => {
+          {data?.data?.map((product, idx) => {
             return (
               <Row className="text-center  align-items-center pb-5" key={idx}>
                 <Col className="col-3 text-center align-items-center d-flex flex-column flex-md-row">
